@@ -1,3 +1,29 @@
+import {
+    BooleanEqualValidator,
+    BooleanNotEqualValidator,
+    DateEqualValidator,
+    DateGteValidator,
+    DateGtValidator,
+    DateLteValidator,
+    DateLtValidator,
+    DateNotEqualValidator,
+    EqualValidator,
+    GteValidator,
+    GtValidator,
+    LteValidator,
+    LtValidator,
+    NotEqualValidator,
+    NumberEqualValidator,
+    NumberGteValidator,
+    NumberGtValidator,
+    NumberLteValidator,
+    NumberLtValidator,
+    NumberNotEqualValidator,
+    RegexValidator,
+    StringContainsValidator,
+    StringStrictlyContainsValidator, Validator
+} from "./filters";
+
 export {};
 
 declare global {
@@ -42,227 +68,6 @@ interface Filter<T> {
     operator: FilterOperator
     value?: any
     test?: (item: T, search: any) => boolean
-}
-
-abstract class Validator {
-    abstract validate: (field: any, item: any, search: any) => boolean
-}
-
-export class LtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        if (typeof value === 'number') {
-            return new NumberLtValidator().validate(field, item, search)
-        }
-        if (value instanceof Date) {
-            return new DateLtValidator().validate(field, item, search)
-        }
-        return false
-    }
-}
-
-export class LteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        if (typeof value === 'number') {
-            return new NumberLteValidator().validate(field, item, search)
-        }
-        if (value instanceof Date) {
-            return new DateLteValidator().validate(field, item, search)
-        }
-        return false
-    }
-}
-
-export class EqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        if (typeof value === 'number') {
-            return new NumberEqualValidator().validate(field, item, search)
-        }
-        if (value instanceof Date) {
-            return new DateEqualValidator().validate(field, item, search)
-        }
-        return false
-    }
-}
-
-export class NotEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        if (typeof value === 'number') {
-            return new NumberNotEqualValidator().validate(field, item, search)
-        }
-        if (value instanceof Date) {
-            return new DateNotEqualValidator().validate(field, item, search)
-        }
-        return true
-    }
-}
-
-export class GtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        if (typeof value === 'number') {
-            return new NumberGtValidator().validate(field, item, search)
-        }
-        if (value instanceof Date) {
-            return new DateGtValidator().validate(field, item, search)
-        }
-        return false
-    }
-}
-
-export class GteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        if (typeof value === 'number') {
-            return new NumberGteValidator().validate(field, item, search)
-        }
-        if (value instanceof Date) {
-            return new DateGteValidator().validate(field, item, search)
-        }
-        return false
-    }
-}
-
-export class NumberLtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'number' && value < search
-    }
-}
-
-export class NumberLteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'number' && value <= search
-    }
-}
-
-export class NumberEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'number' && value === search
-    }
-}
-
-export class NumberNotEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value !== 'number' || value !== search
-    }
-}
-
-export class NumberGtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'number' && value > search
-    }
-}
-
-export class NumberGteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'number' && value >= search
-    }
-}
-
-export class StringContainsValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'string' && new RegExp(search, "gi").test(value)
-    }
-}
-
-export class StringStrictlyContainsValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'string' && value.includes(search)
-    }
-}
-
-export class RegexValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'string' && new RegExp(search).test(value)
-    }
-}
-
-export class DateLtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value < new Date(Date.parse(search))
-    }
-}
-
-export class DateLteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value <= new Date(Date.parse(search))
-    }
-}
-
-export class DateGtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value > new Date(Date.parse(search))
-    }
-}
-
-export class DateGteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value >= new Date(Date.parse(search))
-    }
-}
-
-export class DateEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value.getTime() === new Date(Date.parse(search)).getTime()
-    }
-}
-
-export class DateNotEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value.getTime() !== new Date(Date.parse(search)).getTime()
-    }
-}
-
-export class BooleanEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        if (
-            value !== undefined && value !== null &&
-            search !== undefined && search !== null
-        ) {
-            let strSearch = search.toString().toUpperCase()
-            let boolSearch = (strSearch === 'TRUE' || strSearch === '1' || strSearch === 'Y' || strSearch === 'O')
-            let strValue = value.toString().toUpperCase()
-            let boolValue = (strValue === 'TRUE' || strValue === '1' || strValue === 'Y' || strValue === 'O')
-            return boolSearch === boolValue
-        }
-        return false
-    }
-}
-
-export class BooleanNotEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        if (
-            value !== undefined && value !== null &&
-            search !== undefined && search !== null
-        ) {
-            let strSearch = search.toString().toUpperCase()
-            let boolSearch = (strSearch === 'TRUE' || strSearch === '1' || strSearch === 'Y' || strSearch === 'O')
-            let strValue = value.toString().toUpperCase()
-            let boolValue = (strValue === 'TRUE' || strValue === '1' || strValue === 'Y' || strValue === 'O')
-            return boolSearch !== boolValue
-        }
-        return true
-    }
 }
 
 const isFiltered = function <T>(item: T, filter: Filter<T>): boolean {
