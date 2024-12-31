@@ -1,0 +1,25 @@
+name: Test and Publish
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+          cache-dependency-path: src/yarn.lock
+
+      - name: Install dependencies
+        run: |
+          cd src/
+          yarn
+
+      - name: Run tests
+        run: |
+          cd src/
+          yarn test
