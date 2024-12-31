@@ -1,0 +1,8 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    user: "${UID}:${GID}"
+    volumes:
+      - ./src:/src

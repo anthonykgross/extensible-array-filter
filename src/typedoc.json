@@ -1,0 +1,24 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "Extensible Array Filter",
+  "entryPoints": [
+    "./src"
+  ],
+  "entryPointStrategy": "expand",
+  "navigationLinks": {
+    "Github": "https://github.com/anthonykgross/extensible-array-filter",
+    "Examples": "https://github.com/anthonykgross/extensible-array-filter/tree/main/src/examples"
+  },
+  "projectDocuments": [
+    "./docs/0_index.md",
+    "./docs/1_how-to-use.md",
+    "./docs/2_extending-filter.md",
+    "./docs/3_use-bundle.md"
+  ],
+  "navigation": {
+    "includeCategories": true,
+    "excludeReferences": true
+  },
+  "visibilityFilters": {},
+  "out": "./generated_docs"
+}
