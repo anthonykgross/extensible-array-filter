@@ -1,22 +1,27 @@
-import {Validator} from "./base";
+import {Filter} from "./base";
+import {Clause} from "../types";
 
-export class StringContainsValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'string' && new RegExp(search, "gi").test(value)
+export abstract class StringFilter extends Filter {
+
+}
+
+export class StringContainsFilter extends StringFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return typeof value === 'string' && new RegExp(clause.value, "gi").test(value)
     }
 }
 
-export class StringStrictlyContainsValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'string' && value.includes(search)
+export class StringStrictlyContainsFilter extends StringFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return typeof value === 'string' && value.includes(clause.value)
     }
 }
 
-export class RegexValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'string' && new RegExp(search).test(value)
+export class RegexFilter extends StringFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return typeof value === 'string' && new RegExp(clause.value).test(value)
     }
 }

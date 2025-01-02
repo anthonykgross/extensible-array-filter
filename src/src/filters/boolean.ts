@@ -1,13 +1,19 @@
-import {Validator} from "./base";
+import {Filter} from "./base";
+import {Clause} from "../types";
 
-export class BooleanEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
+export abstract class BooleanFilter extends Filter {
+
+}
+
+export class BooleanEqualFilter extends BooleanFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+
         if (
             value !== undefined && value !== null &&
-            search !== undefined && search !== null
+            clause.value !== undefined && clause.value !== null
         ) {
-            let strSearch = search.toString().toUpperCase()
+            let strSearch = clause.value.toString().toUpperCase()
             let boolSearch = (strSearch === 'TRUE' || strSearch === '1' || strSearch === 'Y' || strSearch === 'O')
             let strValue = value.toString().toUpperCase()
             let boolValue = (strValue === 'TRUE' || strValue === '1' || strValue === 'Y' || strValue === 'O')
@@ -17,14 +23,14 @@ export class BooleanEqualValidator extends Validator {
     }
 }
 
-export class BooleanNotEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
+export class BooleanNotEqualFilter extends BooleanFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
         if (
             value !== undefined && value !== null &&
-            search !== undefined && search !== null
+            clause.value !== undefined && clause.value !== null
         ) {
-            let strSearch = search.toString().toUpperCase()
+            let strSearch = clause.value.toString().toUpperCase()
             let boolSearch = (strSearch === 'TRUE' || strSearch === '1' || strSearch === 'Y' || strSearch === 'O')
             let strValue = value.toString().toUpperCase()
             let boolValue = (strValue === 'TRUE' || strValue === '1' || strValue === 'Y' || strValue === 'O')

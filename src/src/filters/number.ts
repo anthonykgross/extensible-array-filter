@@ -1,43 +1,48 @@
-import {Validator} from "./base";
+import {Filter} from "./base";
+import {Clause} from "../types";
 
-export class NumberLtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'number' && value < search
+export abstract class NumberFilter extends Filter {
+
+}
+
+export class NumberLtFilter extends NumberFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return typeof value === 'number' && value < clause.value
     }
 }
 
-export class NumberLteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'number' && value <= search
+export class NumberLteFilter extends NumberFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return typeof value === 'number' && value <= clause.value
     }
 }
 
-export class NumberEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'number' && value === search
+export class NumberEqualFilter extends NumberFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return typeof value === 'number' && value === clause.value
     }
 }
 
-export class NumberNotEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value !== 'number' || value !== search
+export class NumberNotEqualFilter extends NumberFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return typeof value !== 'number' || value !== clause.value
     }
 }
 
-export class NumberGtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'number' && value > search
+export class NumberGtFilter extends NumberFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return typeof value === 'number' && value > clause.value
     }
 }
 
-export class NumberGteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return typeof value === 'number' && value >= search
+export class NumberGteFilter extends NumberFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return typeof value === 'number' && value >= clause.value
     }
 }
