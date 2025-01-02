@@ -29,3 +29,35 @@ jobs:
         run: |
           cd src/
           yarn test
+
+  publish:
+    if: github.event_name == 'release' && github.event.release.target_commitish == 'main'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+          cache-dependency-path: src/yarn.lock
+
+      - name: Install dependencies
+        run: |
+          cd src/
+          yarn
+
+      - name: Build
+        run: |
+          cd src/
+          yarn build
+
+      - name: Publish to npm
+        run: |
+          cd src/
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
