@@ -10,6 +10,11 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
+"@anthonykgross/extensible-array-filter@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@anthonykgross/extensible-array-filter/-/extensible-array-filter-1.0.0.tgz#f43d5dee388aa8b49918bb16dd85414b42519ceb"
+  integrity sha512-sK4ojJiX9DjeOvUw7rVyoV7oWtI9zVKJVyT95GHtha9WFCtqj/hsE7gOlwpWpFDawm1Z1AhjwMxh00RAzTqHuw==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.25.9", "@babel/code-frame@^7.26.0", "@babel/code-frame@^7.26.2":
   version "7.26.2"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.26.2.tgz#4b5fab97d33338eff916235055f0ebc21e573a85"
