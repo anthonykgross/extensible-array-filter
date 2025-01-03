@@ -1,6 +1,4 @@
-import {} from "@anthonykgross/extensible-array-filter";
-import {Filters, Clause, getDefaultFilters} from "@anthonykgross/extensible-array-filter/types";
-import {StringFilter} from "@anthonykgross/extensible-array-filter/filters";
+import {Clause, Filters, getDefaultFilters, StringFilter} from "@anthonykgross/extensible-array-filter";
 
 class MyFilter extends StringFilter {
     assert = (clause: Clause<any>, item: any) => {
@@ -28,3 +26,5 @@ const rows: Row[] = [
 const result = rows.where([
     { field: 'id', operator: 'my-operator', value: 1 },
 ], filters);
+
+console.log(result)

@@ -26,8 +26,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var types_1 = require("@anthonykgross/extensible-array-filter/types");
-var filters_1 = require("@anthonykgross/extensible-array-filter/filters");
+var extensible_array_filter_1 = require("@anthonykgross/extensible-array-filter");
 var MyFilter = /** @class */ (function (_super) {
     __extends(MyFilter, _super);
     function MyFilter() {
@@ -39,8 +38,8 @@ var MyFilter = /** @class */ (function (_super) {
         return _this;
     }
     return MyFilter;
-}(filters_1.StringFilter));
-var filters = __assign(__assign({}, types_1.getDefaultFilters), { 'my-operator': MyFilter });
+}(extensible_array_filter_1.StringFilter));
+var filters = __assign(__assign({}, extensible_array_filter_1.getDefaultFilters), { 'my-operator': MyFilter });
 var rows = [
     { id: 1, name: 'Example 1' },
     { id: 2, name: 'Example 2' },
@@ -49,3 +48,4 @@ var rows = [
 var result = rows.where([
     { field: 'id', operator: 'my-operator', value: 1 },
 ], filters);
+console.log(result);

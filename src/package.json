@@ -1,6 +1,6 @@
 {
   "name": "@anthonykgross/extensible-array-filter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anthonykgross/extensible-array-filter.git"
@@ -12,7 +12,7 @@
     "test": "jest",
     "docs": "typedoc"
   },
-  "main": "dist/array.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "devDependencies": {
     "@babel/preset-typescript": "^7.26.0",
@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/anthonykgross/extensible-array-filter#readme",
   "dependencies": {
-    "@anthonykgross/extensible-array-filter": "^1.0.0"
+    "@anthonykgross/extensible-array-filter": "^1.0.0",
+    "ts-node": "^10.9.2"
   }
 }
