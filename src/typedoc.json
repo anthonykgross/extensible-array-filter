@@ -1,0 +1,11 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./src"],
+  "entryPointStrategy": "expand",
+  "navigationLinks": {
+    "Github": "https://github.com/anthonykgross/extensible-array-filter"
+  },
+  "customCss": "site/index.css",
+  "sidebarLinks": {},
+  "out": "./generated_docs"
+}

@@ -1,5 +1,5 @@
 {
-  "name": "extensible-array-filter",
+  "name": "@anthonykgross/extensible-array-filter",
   "version": "1.0.0",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "docs": "typedoc --entryPointStrategy Expand src"
+    "docs": "typedoc"
   },
   "main": "dist/array.js",
   "devDependencies": {
