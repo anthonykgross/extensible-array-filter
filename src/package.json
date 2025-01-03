@@ -1,6 +1,6 @@
 {
   "name": "@anthonykgross/extensible-array-filter",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anthonykgross/extensible-array-filter.git"
@@ -8,24 +8,21 @@
   "author": "Anthony K GROSS",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && yarn rollup",
-    "rollup": "rollup -c --bundleConfigAsCjs",
+    "build": "tsc && yarn browserify",
+    "browserify": "browserify dist/index.js > dist/bundle.js",
     "test": "jest",
     "docs": "typedoc"
   },
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "devDependencies": {
     "@babel/preset-typescript": "^7.26.0",
     "@jest/globals": "^29.7.0",
-    "@rollup/plugin-typescript": "^12.1.2",
     "@types/jest": "^29.5.14",
+    "browserify": "^17.0.1",
     "jest": "^29.7.0",
-    "rollup": "^4.29.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "tslib": "^2.8.1",
     "typedoc": "^0.27.6",
     "typescript": "^5.7.2"
   },
