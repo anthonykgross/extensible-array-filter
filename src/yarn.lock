@@ -11,11 +11,12 @@
     "@jridgewell/trace-mapping" "^0.3.24"
 
 "@anthonykgross/extensible-array-filter@^1.0.0":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@anthonykgross/extensible-array-filter/-/extensible-array-filter-1.0.2.tgz#d5d8394382bd9338dd3c573e4532e9b84b77a82e"
-  integrity sha512-jYHXhUR6K5rjYc0ATN5qsv4yzGdAWKyF9lsFE2yxki09s31l/R6LjBaA0tkSMLKi0nQ4o3OMDhpx5WIsBcdBGg==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@anthonykgross/extensible-array-filter/-/extensible-array-filter-1.0.3.tgz#e5abb2bc0a6153a1bbc8fde4d1ccca601776faec"
+  integrity sha512-uLJoxwBEIex4m/NxC6Jl4XhtPjMfC7U3UjlJ05rWYSJAENWblKSowd+ZM81Rq+fSxM8+xqHEsWz0Ckjj6pkexw==
   dependencies:
     "@anthonykgross/extensible-array-filter" "^1.0.0"
+    ts-node "^10.9.2"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.25.9", "@babel/code-frame@^7.26.0", "@babel/code-frame@^7.26.2":
   version "7.26.2"

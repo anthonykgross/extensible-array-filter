@@ -24,7 +24,7 @@ const rows: Row[] = [
 ];
 
 const result = rows.where([
-    { field: 'id', operator: 'my-operator', value: 1 },
+    { field: 'name', operator: 'my-operator', value: '1' },
 ], filters);
 
 console.log(result)

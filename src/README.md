@@ -3,7 +3,11 @@
 Install the package using npm:
 
 ```
-npm install extensible-array-filter
+npm install @anthonykgross/extensible-array-filter
+```
+or
+```
+yarn add @anthonykgross/extensible-array-filter
 ```
 
 ## Usage
@@ -11,7 +15,7 @@ npm install extensible-array-filter
 Import the library in your TypeScript project:
 
 ```typescript
-import 'extensible-array-filter';
+import '@anthonykgross/extensible-array-filter';
 ```
 
 Declare an interface for your data:
