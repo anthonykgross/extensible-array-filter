@@ -1,93 +1,107 @@
 import {
-    NumberEqualValidator, NumberGteValidator,
-    NumberGtValidator,
-    NumberLteValidator,
-    NumberLtValidator,
-    NumberNotEqualValidator
+    NumberEqualFilter, NumberGteFilter,
+    NumberGtFilter,
+    NumberLteFilter,
+    NumberLtFilter,
+    NumberNotEqualFilter
 } from "./number";
 import {
-    DateEqualValidator,
-    DateGteValidator,
-    DateGtValidator,
-    DateLteValidator,
-    DateLtValidator,
-    DateNotEqualValidator
+    DateEqualFilter,
+    DateGteFilter,
+    DateGtFilter,
+    DateLteFilter,
+    DateLtFilter,
+    DateNotEqualFilter
 } from "./date";
-import {Validator} from "./base";
+import {Filter} from "./base";
+import {Clause} from "../types";
 
-export class LtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
+export abstract class GenericFilter extends Filter {
+
+}
+
+export class LtFilter extends GenericFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
         if (typeof value === 'number') {
-            return new NumberLtValidator().validate(field, item, search)
+            return new NumberLtFilter().assert(clause, item)
         }
         if (value instanceof Date) {
-            return new DateLtValidator().validate(field, item, search)
+            return new DateLtFilter().assert(clause, item)
         }
         return false
     }
 }
 
-export class LteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
+export class LteFilter extends GenericFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
         if (typeof value === 'number') {
-            return new NumberLteValidator().validate(field, item, search)
+            return new NumberLteFilter().assert(clause, item)
         }
         if (value instanceof Date) {
-            return new DateLteValidator().validate(field, item, search)
+            return new DateLteFilter().assert(clause, item)
         }
         return false
     }
 }
 
-export class EqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
+export class EqualFilter extends GenericFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
         if (typeof value === 'number') {
-            return new NumberEqualValidator().validate(field, item, search)
+            return new NumberEqualFilter().assert(clause, item)
         }
         if (value instanceof Date) {
-            return new DateEqualValidator().validate(field, item, search)
+            return new DateEqualFilter().assert(clause, item)
         }
         return false
     }
 }
 
-export class NotEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
+export class NotEqualFilter extends GenericFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
         if (typeof value === 'number') {
-            return new NumberNotEqualValidator().validate(field, item, search)
+            return new NumberNotEqualFilter().assert(clause, item)
         }
         if (value instanceof Date) {
-            return new DateNotEqualValidator().validate(field, item, search)
+            return new DateNotEqualFilter().assert(clause, item)
         }
         return true
     }
 }
 
-export class GtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
+export class GtFilter extends GenericFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
         if (typeof value === 'number') {
-            return new NumberGtValidator().validate(field, item, search)
+            return new NumberGtFilter().assert(clause, item)
         }
         if (value instanceof Date) {
-            return new DateGtValidator().validate(field, item, search)
+            return new DateGtFilter().assert(clause, item)
         }
         return false
     }
 }
 
-export class GteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
+export class GteFilter extends GenericFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
         if (typeof value === 'number') {
-            return new NumberGteValidator().validate(field, item, search)
+            return new NumberGteFilter().assert(clause, item)
         }
         if (value instanceof Date) {
-            return new DateGteValidator().validate(field, item, search)
+            return new DateGteFilter().assert(clause, item)
+        }
+        return false
+    }
+}
+
+export class CustomFilter extends GenericFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        if (clause.test) {
+            return clause.test(item, clause.value);
         }
         return false
     }

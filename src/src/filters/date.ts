@@ -1,43 +1,48 @@
-import {Validator} from "./base";
+import {Filter} from "./base";
+import {Clause} from "../types";
 
-export class DateLtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value < new Date(Date.parse(search))
+export abstract class DateFilter extends Filter {
+
+}
+
+export class DateLtFilter extends DateFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return value instanceof Date && value < new Date(Date.parse(clause.value))
     }
 }
 
-export class DateLteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value <= new Date(Date.parse(search))
+export class DateLteFilter extends DateFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return value instanceof Date && value <= new Date(Date.parse(clause.value))
     }
 }
 
-export class DateGtValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value > new Date(Date.parse(search))
+export class DateGtFilter extends DateFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return value instanceof Date && value > new Date(Date.parse(clause.value))
     }
 }
 
-export class DateGteValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value >= new Date(Date.parse(search))
+export class DateGteFilter extends DateFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return value instanceof Date && value >= new Date(Date.parse(clause.value))
     }
 }
 
-export class DateEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value.getTime() === new Date(Date.parse(search)).getTime()
+export class DateEqualFilter extends DateFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return value instanceof Date && value.getTime() === new Date(Date.parse(clause.value)).getTime()
     }
 }
 
-export class DateNotEqualValidator extends Validator {
-    validate = (field: any, item: any, search: any) => {
-        let value = item[field]
-        return value instanceof Date && value.getTime() !== new Date(Date.parse(search)).getTime()
+export class DateNotEqualFilter extends DateFilter {
+    assert = (clause: Clause<any>, item: any) => {
+        let value = item[clause.field]
+        return value instanceof Date && value.getTime() !== new Date(Date.parse(clause.value)).getTime()
     }
 }

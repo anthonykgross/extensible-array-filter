@@ -1,3 +1,5 @@
-export abstract class Validator {
-    abstract validate: (field: any, item: any, search: any) => boolean
+import {Clause} from "../types";
+
+export abstract class Filter {
+    abstract assert: (clause: Clause<any>, item: any) => boolean
 }
