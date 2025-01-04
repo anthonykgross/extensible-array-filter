@@ -39,6 +39,12 @@ it('Filters : BooleanEqualFilter', async () => {
 
     item.fieldA = 'n';
     expect(filter.assert(clause, item)).toBe(false);
+
+    item.fieldA = null;
+    expect(filter.assert(clause, item)).toBe(false);
+
+    item.fieldA = undefined;
+    expect(filter.assert(clause, item)).toBe(false);
 })
 
 it('Filters : BooleanNotEqualFilter', async () => {
@@ -78,4 +84,10 @@ it('Filters : BooleanNotEqualFilter', async () => {
 
     item.fieldA = 'n';
     expect(filter.assert(clause, item)).toBe(true);
+
+    item.fieldA = null;
+    expect(filter.assert(clause, item)).toBe(false);
+
+    item.fieldA = undefined;
+    expect(filter.assert(clause, item)).toBe(false);
 })
