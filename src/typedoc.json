@@ -12,6 +12,7 @@
   "projectDocuments": [
     "./docs/0_index.md",
     "./docs/1_extending-filter.md",
+    "./docs/2_use-bundle.md",
     "./docs/examples/0_index.md"
   ],
   "navigation": {
