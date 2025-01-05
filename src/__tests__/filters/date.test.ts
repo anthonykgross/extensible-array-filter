@@ -1,13 +1,13 @@
 import {expect, it} from "@jest/globals";
 import {
+    Clause,
     DateEqualFilter,
     DateGteFilter,
     DateGtFilter,
     DateLteFilter,
     DateLtFilter,
     DateNotEqualFilter
-} from "../../src/filters";
-import {Clause} from "../../src/types";
+} from "../../src";
 
 it('Filters : DateLtFilter', async () => {
     let filter = new DateLtFilter();

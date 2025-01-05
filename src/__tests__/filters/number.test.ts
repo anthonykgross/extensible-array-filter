@@ -1,13 +1,13 @@
 import {expect, it} from "@jest/globals";
 import {
+    Clause,
     NumberEqualFilter,
     NumberGteFilter,
     NumberGtFilter,
     NumberLteFilter,
     NumberLtFilter,
     NumberNotEqualFilter
-} from "../../src/filters";
-import {Clause} from "../../src/types";
+} from "../../src";
 
 it('Filters : NumberLtFilter', async () => {
     let filter = new NumberLtFilter();

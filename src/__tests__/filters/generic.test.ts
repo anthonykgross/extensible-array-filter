@@ -1,6 +1,14 @@
 import {expect, it} from "@jest/globals";
-import {CustomFilter, EqualFilter, GteFilter, GtFilter, LteFilter, LtFilter, NotEqualFilter} from "../../src/filters";
-import {Clause} from "../../src/types";
+import {
+    Clause,
+    CustomFilter,
+    EqualFilter,
+    GteFilter,
+    GtFilter,
+    LteFilter,
+    LtFilter,
+    NotEqualFilter
+} from "../../src";
 
 it('Filters : LtFilter', async () => {
     let filter = new LtFilter();
@@ -29,6 +37,12 @@ it('Filters : LtFilter', async () => {
     item.fieldA = 100;
     expect(filter.assert(clause, item)).toBe(false);
 
+    item.fieldA = null;
+    expect(filter.assert(clause, item)).toBe(false);
+
+    item.fieldA = undefined;
+    expect(filter.assert(clause, item)).toBe(false);
+
     clause.value = new Date(2023, 9, 10);
 
     item.fieldA = new Date(2023, 9, 9);
@@ -43,7 +57,7 @@ it('Filters : LtFilter', async () => {
     item.fieldA = new Date(2024, 9, 9);
     expect(filter.assert(clause, item)).toBe(false);
 
-    item.fieldA = 'my_invalid_value';
+    item.fieldA = 'my_string_value';
     expect(filter.assert(clause, item)).toBe(false);
 })
 
@@ -74,6 +88,12 @@ it('Filters : LteFilter', async () => {
     item.fieldA = 100;
     expect(filter.assert(clause, item)).toBe(false);
 
+    item.fieldA = null;
+    expect(filter.assert(clause, item)).toBe(false);
+
+    item.fieldA = undefined;
+    expect(filter.assert(clause, item)).toBe(false);
+
     clause.value = new Date(2023, 9, 10);
 
     item.fieldA = new Date(2023, 9, 9);
@@ -88,7 +108,7 @@ it('Filters : LteFilter', async () => {
     item.fieldA = new Date(2024, 9, 9);
     expect(filter.assert(clause, item)).toBe(false);
 
-    item.fieldA = 'my_invalid_value';
+    item.fieldA = 'my_string_value';
     expect(filter.assert(clause, item)).toBe(false);
 })
 
@@ -119,6 +139,12 @@ it('Filters : GtFilter', async () => {
     item.fieldA = 100;
     expect(filter.assert(clause, item)).toBe(true);
 
+    item.fieldA = null;
+    expect(filter.assert(clause, item)).toBe(false);
+
+    item.fieldA = undefined;
+    expect(filter.assert(clause, item)).toBe(false);
+
     clause.value = new Date(2023, 9, 10);
 
     item.fieldA = new Date(2023, 9, 9);
@@ -133,8 +159,8 @@ it('Filters : GtFilter', async () => {
     item.fieldA = new Date(2024, 9, 9);
     expect(filter.assert(clause, item)).toBe(true);
 
-    item.fieldA = 'my_invalid_value';
-    expect(filter.assert(clause, item)).toBe(false);
+    item.fieldA = 'my_string_value';
+    expect(filter.assert(clause, item)).toBe(true);
 })
 
 it('Filters : GteFilter', async () => {
@@ -164,6 +190,12 @@ it('Filters : GteFilter', async () => {
     item.fieldA = 100;
     expect(filter.assert(clause, item)).toBe(true);
 
+    item.fieldA = null;
+    expect(filter.assert(clause, item)).toBe(false);
+
+    item.fieldA = undefined;
+    expect(filter.assert(clause, item)).toBe(false);
+
     clause.value = new Date(2023, 9, 10);
 
     item.fieldA = new Date(2023, 9, 9);
@@ -178,8 +210,8 @@ it('Filters : GteFilter', async () => {
     item.fieldA = new Date(2024, 9, 9);
     expect(filter.assert(clause, item)).toBe(true);
 
-    item.fieldA = 'my_invalid_value';
-    expect(filter.assert(clause, item)).toBe(false);
+    item.fieldA = 'my_string_value';
+    expect(filter.assert(clause, item)).toBe(true);
 })
 
 it('Filters : EqualFilter', async () => {
@@ -209,6 +241,12 @@ it('Filters : EqualFilter', async () => {
     item.fieldA = 100;
     expect(filter.assert(clause, item)).toBe(false);
 
+    item.fieldA = null;
+    expect(filter.assert(clause, item)).toBe(false);
+
+    item.fieldA = undefined;
+    expect(filter.assert(clause, item)).toBe(false);
+
     clause.value = new Date(2023, 9, 10);
 
     item.fieldA = new Date(2023, 9, 9);
@@ -223,7 +261,7 @@ it('Filters : EqualFilter', async () => {
     item.fieldA = new Date(2024, 9, 9);
     expect(filter.assert(clause, item)).toBe(false);
 
-    item.fieldA = 'my_invalid_value';
+    item.fieldA = 'my_string_value';
     expect(filter.assert(clause, item)).toBe(false);
 })
 
@@ -255,6 +293,12 @@ it('Filters : NotEqualFilter', async () => {
     item.fieldA = 100;
     expect(filter.assert(clause, item)).toBe(true);
 
+    item.fieldA = null;
+    expect(filter.assert(clause, item)).toBe(true);
+
+    item.fieldA = undefined;
+    expect(filter.assert(clause, item)).toBe(true);
+
     clause.value = new Date(2023, 9, 10);
 
     item.fieldA = new Date(2023, 9, 9);
@@ -269,7 +313,7 @@ it('Filters : NotEqualFilter', async () => {
     item.fieldA = new Date(2024, 9, 9);
     expect(filter.assert(clause, item)).toBe(true);
 
-    item.fieldA = 'my_invalid_value';
+    item.fieldA = 'my_string_value';
     expect(filter.assert(clause, item)).toBe(true);
 })
 
@@ -301,6 +345,12 @@ it('Filters : CustomFilter', async () => {
     expect(filter.assert(clause, item)).toBe(false);
 
     item.fieldA = 100;
+    expect(filter.assert(clause, item)).toBe(false);
+
+    item.fieldA = null;
+    expect(filter.assert(clause, item)).toBe(false);
+
+    item.fieldA = undefined;
     expect(filter.assert(clause, item)).toBe(false);
 
     item.fieldA = new Date(2023, 9, 9);
