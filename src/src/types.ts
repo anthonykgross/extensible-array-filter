@@ -23,7 +23,13 @@ import {
     StringContainsFilter,
     StringStrictlyContainsFilter,
     Filter,
-    CustomFilter
+    CustomFilter,
+    StringLtFilter,
+    StringLteFilter,
+    StringEqualFilter,
+    StringGteFilter,
+    StringGtFilter,
+    StringNotEqualFilter
 } from "./filters";
 
 /**
@@ -53,6 +59,13 @@ export type DefaultClauseOperator =
     | 'number->'
     | 'number->='
     | 'number-!='
+
+    | 'string-<'
+    | 'string-<='
+    | 'string-=='
+    | 'string->'
+    | 'string->='
+    | 'string-!='
 
     | 'contains'
     | 'strictly-contains'
@@ -91,6 +104,13 @@ export const getDefaultFilters: Filters = {
     'number->': NumberGtFilter,
     'number->=': NumberGteFilter,
     'number-!=': NumberNotEqualFilter,
+
+    'string-<': StringLtFilter,
+    'string-<=': StringLteFilter,
+    'string-==': StringEqualFilter,
+    'string->': StringGtFilter,
+    'string->=': StringGteFilter,
+    'string-!=': StringNotEqualFilter,
 
     'boolean-==': BooleanEqualFilter,
     'boolean-!=': BooleanNotEqualFilter,

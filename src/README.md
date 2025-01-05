@@ -64,44 +64,50 @@ const result = data.orWhere([
 ```
 
 ## Supported Filters
-|Operator|Description|Filter values|
-|---|---|---|
-||||
-|**Generic**|||
-| < | less | Date \ Number |
-| <= | less or equal | Date \ Number |
-| == | equal | Date \ Number |
-| != | not equal | Date \ Number |
-| \> | greater | Date \ Number |
-| >= | greater or equal | Date \ Number |
-||||
-|**Boolean**|||
-| boolean-== | equal | Boolean |
-| boolean-!= | not equal | Boolean |
-||||
-|**Date**|||
-| date-< | less | Date |
-| date-<= | less or equal | Date |
-| date-== | equal | Date |
-| date-!= | not equal | Date |
-| date-> | greater | Date |
-| date->= | greater or equal | Date |
-||||
-|**Number**|||
-| number-< | less | Number |
-| number-<= | less or equal | Number |
-| number-== | equal | Number |
-| number-!= | not equal | Number |
-| number-> | greater | Number |
-| number->= | greater or equal | Number |
-||||
-|**String**|||
-| contains | equal | String |
+| Operator          |Description|Filter values|
+|-------------------|---|---|
+|                   |||
+| **Generic**       |||
+| <                 | less | Date \ Number |
+| <=                | less or equal | Date \ Number |
+| ==                | equal | Date \ Number |
+| !=                | not equal | Date \ Number |
+| \>                | greater | Date \ Number |
+| >=                | greater or equal | Date \ Number |
+|                   |||
+| **Boolean**       |||
+| boolean-==        | equal | Boolean |
+| boolean-!=        | not equal | Boolean |
+|                   |||
+| **Date**          |||
+| date-<            | less | Date |
+| date-<=           | less or equal | Date |
+| date-==           | equal | Date |
+| date-!=           | not equal | Date |
+| date->            | greater | Date |
+| date->=           | greater or equal | Date |
+|                   |||
+| **Number**        |||
+| number-<          | less | Number |
+| number-<=         | less or equal | Number |
+| number-==         | equal | Number |
+| number-!=         | not equal | Number |
+| number->          | greater | Number |
+| number->=         | greater or equal | Number |
+|                   |||
+| **String**        |||
+| string-<          | less | String |
+| string-<=         | less or equal | String |
+| string-==         | equal | String |
+| string-!=         | not equal | String |
+| string->          | greater | String |
+| string->=         | greater or equal | String |
+| contains          | equal | String |
 | strictly-contains | equal | String |
-||||
-| **Any** |||
-| regex | equal | Any |
-| custom | - | Any |
+|                   |||
+| **Any**           |||
+| regex             | equal | Any |
+| custom            | - | Any |
 
 ## Define your custom filter
 ```typescript
