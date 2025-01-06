@@ -5,6 +5,9 @@ export abstract class StringFilter extends Filter {
 
 }
 
+/**
+ * Search item where its value contains a specific string value.
+ */
 export class StringContainsFilter extends StringFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -12,6 +15,9 @@ export class StringContainsFilter extends StringFilter {
     }
 }
 
+/**
+ * Search item where its value is equal to a specific string value.
+ */
 export class StringStrictlyContainsFilter extends StringFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -19,6 +25,9 @@ export class StringStrictlyContainsFilter extends StringFilter {
     }
 }
 
+/**
+ * Search item where its value match witch specific Regexp.
+ */
 export class RegexFilter extends StringFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -26,6 +35,9 @@ export class RegexFilter extends StringFilter {
     }
 }
 
+/**
+ *
+ */
 export abstract class StringComparisonFilter extends StringFilter {
     getFirstDiffIndex = (clauseValue?: string, itemValue?: string) => {
         if (!clauseValue || !itemValue) {
@@ -51,7 +63,9 @@ export abstract class StringComparisonFilter extends StringFilter {
     }
 }
 
-
+/**
+ * Search item where its value is less or equal (in the alphabetical order) than a specific string value.
+ */
 export class StringLteFilter extends StringComparisonFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -67,6 +81,9 @@ export class StringLteFilter extends StringComparisonFilter {
     }
 }
 
+/**
+ * Search item where its value is less (in the alphabetical order) than a specific string value.
+ */
 export class StringLtFilter extends StringComparisonFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -82,6 +99,9 @@ export class StringLtFilter extends StringComparisonFilter {
     }
 }
 
+/**
+ * Search item where its value is greater or equal (in the alphabetical order) than a specific string value.
+ */
 export class StringGteFilter extends StringComparisonFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -97,6 +117,9 @@ export class StringGteFilter extends StringComparisonFilter {
     }
 }
 
+/**
+ * Search item where its value is greater (in the alphabetical order) than a specific string value.
+ */
 export class StringGtFilter extends StringComparisonFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -112,6 +135,9 @@ export class StringGtFilter extends StringComparisonFilter {
     }
 }
 
+/**
+ * Search item where its value is starting by a specific string value.
+ */
 export class StringEqualFilter extends StringComparisonFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -127,6 +153,9 @@ export class StringEqualFilter extends StringComparisonFilter {
     }
 }
 
+/**
+ * Search item where its value is not starting by a specific string value.
+ */
 export class StringNotEqualFilter extends StringComparisonFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]

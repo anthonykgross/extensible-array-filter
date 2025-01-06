@@ -38,3 +38,8 @@ category: Get Started
     </body>
 </html>
 ```
+
+## See also
+- [Installation](0_index.md)
+- [How to use](1_how-to-use.md)
+- [Create your own filter](2_extending-filter.md)

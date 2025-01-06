@@ -19,6 +19,10 @@ export abstract class BooleanFilter extends Filter {
         'false'
     ]
 
+    /**
+     * Convert a value to a boolean based on `trueValues` and `falseValues`
+     * @param value
+     */
     toBoolean = (value: any) : boolean | null => {
         let trueValues = BooleanFilter
             .trueValues
@@ -44,6 +48,9 @@ export abstract class BooleanFilter extends Filter {
     }
 }
 
+/**
+ * Search item where its value contains a specific boolean.
+ */
 export class BooleanEqualFilter extends BooleanFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -54,6 +61,9 @@ export class BooleanEqualFilter extends BooleanFilter {
     }
 }
 
+/**
+ * Search item where its value not contains a specific boolean.
+ */
 export class BooleanNotEqualFilter extends BooleanFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]

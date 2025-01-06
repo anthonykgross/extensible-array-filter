@@ -29,6 +29,9 @@ export abstract class GenericFilter extends Filter {
 
 }
 
+/**
+ * Based on the `value` type, search item where its value is less than a specific value using the right filter.
+ */
 export class LtFilter extends GenericFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -45,6 +48,9 @@ export class LtFilter extends GenericFilter {
     }
 }
 
+/**
+ * Based on the `value` type, search item where its value is less or equal than a specific value using the right filter.
+ */
 export class LteFilter extends GenericFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -61,6 +67,9 @@ export class LteFilter extends GenericFilter {
     }
 }
 
+/**
+ * Based on the `value` type, search item where its value is equal to a specific value using the right filter.
+ */
 export class EqualFilter extends GenericFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -77,6 +86,9 @@ export class EqualFilter extends GenericFilter {
     }
 }
 
+/**
+ * Based on the `value` type, search item where is not equal to a specific value using the right filter.
+ */
 export class NotEqualFilter extends GenericFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -93,6 +105,9 @@ export class NotEqualFilter extends GenericFilter {
     }
 }
 
+/**
+ * Based on the `value` type, search item where its value is greater than a specific value using the right filter.
+ */
 export class GtFilter extends GenericFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -109,6 +124,9 @@ export class GtFilter extends GenericFilter {
     }
 }
 
+/**
+ * Based on the `value` type, search item where its value is greater or equal than a specific value using the right filter.
+ */
 export class GteFilter extends GenericFilter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
@@ -125,6 +143,9 @@ export class GteFilter extends GenericFilter {
     }
 }
 
+/**
+ * Search item where its value is matching with the test function.
+ */
 export class CustomFilter extends GenericFilter {
     assert = (clause: Clause<any>, item: any) => {
         if (clause.test) {

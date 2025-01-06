@@ -7,9 +7,9 @@ category: Get Started
 
 ## Create your filter
 ```typescript
-import {Clause, Filters, getDefaultFilters, StringFilter} from "@anthonykgross/extensible-array-filter";
+import {Clause, Filters, getDefaultFilters, Filter} from "@anthonykgross/extensible-array-filter";
 
-class MyFilter extends StringFilter {
+class MyFilter extends Filter {
     assert = (clause: Clause<any>, item: any) => {
         let value = item[clause.field]
         return typeof value === 'string' && new RegExp(clause.value, "gi").test(value)
@@ -18,13 +18,15 @@ class MyFilter extends StringFilter {
 ```
 
 ## Add your filter
+
+Add yours to the default one.
 ```typescript
 let filters: Filters = {
     ...getDefaultFilters,
     'my-operator': MyFilter,
 }
 ```
-or
+or only use yours.
 ```typescript
 let filters: Filters = {
     'my-operator': MyFilter,
@@ -56,3 +58,8 @@ rows.where(
 
 // Expected output: [ { id: 1, name: 'Example 1' } ]
 ```
+
+## See also
+- [Installation](0_index.md)
+- [How to use](1_how-to-use.md)
+- [Use it for your HTML page](3_use-bundle.md)

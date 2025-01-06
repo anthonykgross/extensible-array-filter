@@ -11,9 +11,9 @@
   },
   "projectDocuments": [
     "./docs/0_index.md",
-    "./docs/1_extending-filter.md",
-    "./docs/2_use-bundle.md",
-    "./docs/examples/0_index.md"
+    "./docs/1_how-to-use.md",
+    "./docs/2_extending-filter.md",
+    "./docs/3_use-bundle.md"
   ],
   "navigation": {
     "includeCategories": true,
