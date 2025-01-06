@@ -1,6 +1,9 @@
 import {expect, it} from "@jest/globals";
-import {BooleanEqualFilter, BooleanNotEqualFilter} from "../../src/filters";
-import {Clause} from "../../src/types";
+import {
+    Clause,
+    BooleanEqualFilter,
+    BooleanNotEqualFilter
+} from "../../src";
 
 it('Filters : BooleanEqualFilter', async () => {
     let filter = new BooleanEqualFilter();

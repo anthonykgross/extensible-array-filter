@@ -1,5 +1,6 @@
 import {
-    NumberEqualFilter, NumberGteFilter,
+    NumberEqualFilter,
+    NumberGteFilter,
     NumberGtFilter,
     NumberLteFilter,
     NumberLtFilter,
@@ -15,6 +16,14 @@ import {
 } from "./date";
 import {Filter} from "./base";
 import {Clause} from "../types";
+import {
+    StringEqualFilter,
+    StringGteFilter,
+    StringGtFilter,
+    StringLteFilter,
+    StringLtFilter,
+    StringNotEqualFilter
+} from "./string";
 
 export abstract class GenericFilter extends Filter {
 
@@ -29,6 +38,9 @@ export class LtFilter extends GenericFilter {
         if (value instanceof Date) {
             return new DateLtFilter().assert(clause, item)
         }
+        if (typeof value === 'string') {
+            return new StringLtFilter().assert(clause, item)
+        }
         return false
     }
 }
@@ -41,6 +53,9 @@ export class LteFilter extends GenericFilter {
         }
         if (value instanceof Date) {
             return new DateLteFilter().assert(clause, item)
+        }
+        if (typeof value === 'string') {
+            return new StringLteFilter().assert(clause, item)
         }
         return false
     }
@@ -55,6 +70,9 @@ export class EqualFilter extends GenericFilter {
         if (value instanceof Date) {
             return new DateEqualFilter().assert(clause, item)
         }
+        if (typeof value === 'string') {
+            return new StringEqualFilter().assert(clause, item)
+        }
         return false
     }
 }
@@ -67,6 +85,9 @@ export class NotEqualFilter extends GenericFilter {
         }
         if (value instanceof Date) {
             return new DateNotEqualFilter().assert(clause, item)
+        }
+        if (typeof value === 'string') {
+            return new StringNotEqualFilter().assert(clause, item)
         }
         return true
     }
@@ -81,6 +102,9 @@ export class GtFilter extends GenericFilter {
         if (value instanceof Date) {
             return new DateGtFilter().assert(clause, item)
         }
+        if (typeof value === 'string') {
+            return new StringGtFilter().assert(clause, item)
+        }
         return false
     }
 }
@@ -93,6 +117,9 @@ export class GteFilter extends GenericFilter {
         }
         if (value instanceof Date) {
             return new DateGteFilter().assert(clause, item)
+        }
+        if (typeof value === 'string') {
+            return new StringGteFilter().assert(clause, item)
         }
         return false
     }
